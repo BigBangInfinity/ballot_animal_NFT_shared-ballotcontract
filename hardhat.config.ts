@@ -20,11 +20,11 @@ const config: HardhatUserConfig = {
     // ... other networks ...
   },
 
-  sourcify: {
-    // Disabled by default
-    // Doesn't need an API key
-    enabled: true
-  }
+  // sourcify: {
+  //   // Disabled by default
+  //   // Doesn't need an API key
+  //   enabled: true
+  // }
 };
 
 export default config;

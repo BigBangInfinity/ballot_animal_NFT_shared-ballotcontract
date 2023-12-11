@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { MyToken__factory } from "../typechain-types";
+import { MyNFT__factory } from "../typechain-types";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -13,7 +13,7 @@ async function main() {
     if (balance < 0.01) {
         throw new Error("Not enough ether");
     }
-    const contractFactory = new MyToken__factory(wallet);
+    const contractFactory = new MyNFT__factory(wallet);
     const contract = await contractFactory.deploy();
     await contract.waitForDeployment();
     const contractAddress = contract.target;

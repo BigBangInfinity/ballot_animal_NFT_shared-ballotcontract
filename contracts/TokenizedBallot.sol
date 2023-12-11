@@ -2,7 +2,7 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 interface IMyToken {
-    function getPastVotes(address, uint256) external view returns (uint256);
+    function getVotes(address) external view returns (uint256);
 }
 
 contract TokenizedBallot {
@@ -14,20 +14,13 @@ contract TokenizedBallot {
 
     IMyToken public tokenContract;
     Proposal[] public proposals;
-    uint256 public targetBlockNumber;
 
     constructor(
         bytes32[] memory _proposalNames,
-        address _tokenContract,
-        uint256 _targetBlockNumber
+        address _tokenContract
     ) {
         tokenContract = IMyToken(_tokenContract);
-        require(
-            _targetBlockNumber <= block.number,
-            "TokenizedBallot: Target block number must be in the past"
-        );
 
-        targetBlockNumber = _targetBlockNumber;
         // TODO: Validate if targetBlockNumber is in the past
         for (uint i = 0; i < _proposalNames.length; i++) {
             Proposal storage newProposal = proposals.push();
@@ -54,7 +47,7 @@ contract TokenizedBallot {
     }
 
     function votingPower(address account) public view returns (uint256) {
-        return tokenContract.getPastVotes(account, targetBlockNumber);
+        return tokenContract.getVotes(account);
         // todo check if this is enough for protecting the contract
     }
 

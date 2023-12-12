@@ -5,7 +5,15 @@ dotenv.config(); // This loads the .env file at the start of your script
 
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.19",
+  solidity: {
+    version: "0.8.19",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 10 // Adjust the "runs" value as needed
+      }
+    }
+  },
 
   etherscan: {
     // Your API key for Etherscan

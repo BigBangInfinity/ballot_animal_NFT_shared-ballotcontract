@@ -10,8 +10,8 @@ async function main() {
     const wallet = new ethers.Wallet(process.env.PRIVATE_KEY ?? "", provider);
     console.log(`Using address ${wallet.address}`);
 
-    const myTokenAddress = "0xC895Edd7C0D122e02f13c84C401AEc00e1d999F8";
-    const proposalNames = ["Bored Ape Yacht Club", "CryptoPunks", "Pudgy Penguins"];
+    const myTokenAddress = "0x11e1B946c16A35CB45C8E93137A2A592FcE9dba6";
+    const proposalNames = ["Bored Ape Yacht Club", "CryptoKitties", "Pudgy Penguins"];
 
     // Convert proposal names to bytes32 arrays
     const ProposalNames: string[] = proposalNames.map((proposalNames) => ethers.encodeBytes32String(proposalNames));
